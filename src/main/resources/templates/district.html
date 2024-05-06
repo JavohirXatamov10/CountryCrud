@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>District</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
 </head>
 <body>
-<h1 th:text="${district}"></h1>
+
+<nav class="navbar bg-body-tertiary">
+    <form class="container-fluid justify-content-start">
+        <a href="/main" class="btn btn-outline-success me-2" type="button">Main</a>
+        <a href="/country" class="btn btn-sm btn-outline-secondary" type="button">Country</a>
+        <a href="/region" class="btn btn-sm btn-outline-secondary" type="button">Region</a>
+        <a href="/district" class="btn btn-sm btn-outline-secondary" type="button">District</a>
+    </form>
+</nav>
 </body>
 </html>

@@ -1,4 +1,4 @@
 package org.example.payload;
 
-public record RegionDTO() {
+public record RegionDTO(Integer id, String name, String countryName) {
 }

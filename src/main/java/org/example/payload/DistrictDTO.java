@@ -1,4 +1,4 @@
 package org.example.payload;
 
-public class DistrictDTO {
+public record DistrictDTO (Integer id, String name, String regionName){
 }
