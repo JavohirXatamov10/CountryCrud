@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Region</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
+<h1 class="bg-dark text-center text-white">Region</h1>
 <nav class="navbar bg-body-tertiary">
-    <ul class="container-fluid justify-content-start align-items-center">
-
+    <form class="container-fluid justify-content-start align-items-center">
         <a href="/main" class="btn btn-outline-success me-2" type="button">Main</a>
         <a href="/country" class="btn btn-sm btn-outline-secondary" type="button">Country</a>
         <a href="/region" class="btn btn-sm btn-outline-secondary" type="button">Region</a>
         <a href="/district" class="btn btn-sm btn-outline-secondary" type="button">District</a>
+        <a href="" class="btn btn-sm btn-outline-secondary" type="button">Add Region</a>
 
-    </ul>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="region:${regions}">
+            <td th:text="${region.id}"></td>
+            <td th:text="${region.name()}"></td>
+            <td th:text="${region.countryName()}"></td>
+            <td>
+                <form>
+                    <a class="btn btn-dark text-white">Edit</a>
+                </form>
+                <form th:action="|/region/${region.id}|" method="post">
+                    <button class="btn btn-dark text-white">Delete</button>
+                </form>
+        </tr>
+        </tbody>
+    </table>
+
+
 </nav>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>District</title>
@@ -7,14 +7,46 @@
 
 </head>
 <body>
-
+<h1 class="bg-dark text-center text-white">District</h1>
 <nav class="navbar bg-body-tertiary">
     <form class="container-fluid justify-content-start">
         <a href="/main" class="btn btn-outline-success me-2" type="button">Main</a>
         <a href="/country" class="btn btn-sm btn-outline-secondary" type="button">Country</a>
         <a href="/region" class="btn btn-sm btn-outline-secondary" type="button">Region</a>
         <a href="/district" class="btn btn-sm btn-outline-secondary" type="button">District</a>
+        <a href="" class="btn btn-sm btn-outline-secondary" type="button">Add district</a>
+
     </form>
 </nav>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Region</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="district:${districts}">
+        <td th:text="${district.id()}"></td>
+        <td th:text="${district.regionName()}"></td>
+        <td th:text="${district.name()}"></td>
+        <td>
+
+            <form>
+                <button class="btn btn-dark text-white">Edit</button>
+            </form>
+            <form th:action="|/district/${district.id}|" method="post">
+                <button class="btn btn-dark text-white">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
 </body>
 </html>
