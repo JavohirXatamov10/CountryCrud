@@ -32,9 +32,7 @@ public class DistrictRepo {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
-
     public static void delete(Integer id) {
         String query = "delete from district where id=?";
         try (
@@ -46,6 +44,5 @@ public class DistrictRepo {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditCountry</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row center-align">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Edit Country</h5>
+                </div>
+                <div class="card-body">
+                    <form th:action="|/country/editCountry/${countryItem.id}|" method="post">
+                        <div class="form-group">
+                            <label for="countryName">Country Name:</label>
+                            <input th:value="${countryItem.name}"  name="name" type="text" class="form-control" id="countryName">
+                        </div>
+                        <button type="submit" class="btn btn-primary with w-100" >Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

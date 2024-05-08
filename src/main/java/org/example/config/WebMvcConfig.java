@@ -42,10 +42,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
         viewResolver.setTemplateEngine(templateEngine());
         viewResolver.setOrder(1);
-        //viewResolver.setViewNames(new String[] {".html", ".xhtml"}); bu har safar yangi htnml yaratgani sabab buni commentaryga olib qo`ydik
         return viewResolver;
     }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
 

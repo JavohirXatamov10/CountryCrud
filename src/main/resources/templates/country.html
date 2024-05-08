@@ -14,7 +14,7 @@
         <a href="/country" class="btn btn-sm btn-outline-secondary" type="button">Country</a>
         <a href="/region" class="btn btn-sm btn-outline-secondary" type="button">Region</a>
         <a href="/district" class="btn btn-sm btn-outline-secondary" type="button">District</a>
-        <a href="/add" class="btn btn-sm btn-outline-secondary" type="button">Add Country</a>
+        <a href="/country/add" class="btn btn-sm btn-outline-secondary" type="button">Add Country</a>
 
     </form>
 </nav>
@@ -32,7 +32,7 @@
         <td th:text="${country.id}"></td>
         <td th:text="${country.name}"></td>
         <td>
-            <a th:href="|/edit/${country.getId()}|" class="btn btn-dark text-white">Edit</a>
+            <a th:href="|/country/edit/${country.getId()}|" class="btn btn-dark text-white">Edit</a>
 
             <form th:action="|/country/${country.getId()}|" method="post">
                 <button class="btn btn-dark text-white">Delete</button>

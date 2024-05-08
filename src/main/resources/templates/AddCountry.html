@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Country</title>
+    <!-- Bootstrap CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center alignment */
+        .center-align {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row center-align">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add Country</h5>
+                </div>
+                <div class="card-body">
+                    <form action="/country/add" method="post">
+                        <div class="form-group">
+                            <label for="countryName">Country Name:</label>
+                            <input name="name" type="text" class="form-control" id="countryName" placeholder="Enter Country Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary with w-100" >Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
