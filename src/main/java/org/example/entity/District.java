@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class District {
     private Integer id;
-    private Integer name;
+    private String name;
     private Integer regionId;
 }

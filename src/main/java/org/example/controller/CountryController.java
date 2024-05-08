@@ -30,7 +30,7 @@ public class CountryController {
     @GetMapping("/add")
     public ModelAndView addHtm(){
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.setViewName("AddCountry");
+        modelAndView.setViewName("addCountry");
 
         return modelAndView;
     }

@@ -17,7 +17,6 @@ import org.thymeleaf.templatemode.TemplateMode;
 @EnableWebMvc
 @RequiredArgsConstructor
 public class WebMvcConfig implements WebMvcConfigurer {
-
     private final ApplicationContext applicationContext;
     @Bean
     public SpringResourceTemplateResolver templateResolver(){
@@ -29,7 +28,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         templateResolver.setCacheable(true);
         return templateResolver;
     }
-
     @Bean
     public SpringTemplateEngine templateEngine(){
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -46,7 +44,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
-
         registry.addResourceHandler("/css/*")
                 .addResourceLocations("classpath:/static/css/");
 

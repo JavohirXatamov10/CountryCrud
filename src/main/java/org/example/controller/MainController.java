@@ -11,7 +11,6 @@ public class MainController {
     @GetMapping
     public ModelAndView get(){
         ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("user","xasan");
         modelAndView.setViewName("index");
         return modelAndView;
     }
