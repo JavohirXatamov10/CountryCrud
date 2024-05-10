@@ -33,12 +33,9 @@
     function CountryAndRegion() {
         var select = document.getElementById("selectCountry");
         var countryId = select.value;
-
         var selectRegion = document.getElementById("selectRegion");
         selectRegion.innerHTML = "<option disabled selected>Choose Region</option>";
-
         const url = "/district/getRegions/" + countryId;
-
         fetch(url, {
             method:"POST"
         })
