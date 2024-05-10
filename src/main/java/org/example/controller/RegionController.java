@@ -8,6 +8,7 @@ import org.example.repo.RegionRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -15,11 +16,19 @@ import java.util.List;
 @RequestMapping("region")
 public class RegionController {
     @PostMapping("/addRegion")
-    public String addRegion(@ModelAttribute Region region){
+    public String addRegion(@ModelAttribute("region") Region region, RedirectAttributes redirectAttributes) {
+        // Validate the region object if necessary
         System.out.println(region);
         RegionRepo.saveRegion(region);
-        return "redirect:/region";
+        redirectAttributes.addFlashAttribute("successMessage", "Region added successfully"); // Flash message
+        return "redirect:/region"; // Redirect to the desired page
     }
+//    @PostMapping("/addRegion")
+//    public String addRegion(@ModelAttribute Region region){
+//        System.out.println(region);
+//        RegionRepo.saveRegion(region);
+//        return "redirect:/region";
+//    }
     @GetMapping
     public ModelAndView get(){
         List<RegionDTO> regionDTOS= RegionRepo.findAllDTORegions();
@@ -53,7 +62,6 @@ public class RegionController {
     }
     @PostMapping("/edit/{id}")
     public String editRegion(@PathVariable(name = "id") Integer id, @ModelAttribute Region region){
-        System.out.println(region);
         RegionRepo.update(id, region);
         return "redirect:/region"; // assuming you want to redirect to the main region page after editing
     }

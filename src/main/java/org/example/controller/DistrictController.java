@@ -46,7 +46,6 @@ public class DistrictController {
     }
     @PostMapping("/edit/{id}")
     public String editDistrict(@PathVariable(name = "id") Integer id, @ModelAttribute District district){
-        System.out.println(district);
         DistrictRepo.update(id, district);
         return "redirect:/district"; // assuming you want to redirect to the main region page after editing
     }

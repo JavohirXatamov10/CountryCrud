@@ -30,12 +30,13 @@
                         <div class="form-group">
                             <label for="regionName">Region Name:</label>
                             <input name="name" type="text" class="form-control" id="regionName" placeholder="Name">
-                            <select name="countryId">
-                                <option  selected disabled>Choose</option>
-                                <option th:each="country:${countries}" th:text="|${country.name}|" th:value="country.id"></option>
+                            <select name="countryId" class="form-control"> <!-- Added class and closed tag -->
+                                <option value="" selected disabled>Choose</option> <!-- Corrected syntax -->
+                                <!-- Ensure that Thymeleaf is correctly configured to populate the options -->
+                                <option th:each="country : ${countries}" th:text="${country.name}" th:value="${country.id}"></option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary with w-100" >Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button> <!-- Removed unnecessary class -->
                     </form>
                 </div>
             </div>
