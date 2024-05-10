@@ -24,6 +24,16 @@ public class DistrictController {
         modelAndView.setViewName("district");
         return modelAndView;
     }
+    @GetMapping("/add")
+    public ModelAndView addDistrict(){
+        ModelAndView modelAndView=new ModelAndView();
+        List<Country> countries=CountryRepo.findAll();
+        List<Region> regions=RegionRepo.findAll();
+        modelAndView.addObject("countries", countries);
+        modelAndView.addObject("regions", regions);
+        modelAndView.setViewName("addDistrict");
+        return modelAndView;
+    }
     @GetMapping ("/sentToEditPage/{id}")
     public ModelAndView editRegion(@PathVariable(name = "id") Integer id, @ModelAttribute Region region){
             ModelAndView modelAndView=new ModelAndView();
@@ -34,7 +44,6 @@ public class DistrictController {
             modelAndView.setViewName("editDistrict");
             return modelAndView;
     }
-
     @PostMapping("/edit/{id}")
     public String editDistrict(@PathVariable(name = "id") Integer id, @ModelAttribute District district){
         System.out.println(district);
@@ -45,5 +54,18 @@ public class DistrictController {
     public String deleteRegion(@PathVariable(name = "id") Integer id){
         DistrictRepo.delete(id);
         return "redirect:/district";
+    }
+    @PostMapping("/addDistrict")
+    public String addDistrict(@ModelAttribute District district) {
+        DistrictRepo.save(district);
+        return "redirect:/addDistrict";
+    }
+    @PostMapping("/getRegions/{id}")
+    public ModelAndView getRegions(@PathVariable(name = "id") Integer countryId) {
+        ModelAndView modelAndView=new ModelAndView();
+        List<Region> regions=RegionRepo.findByCountryId(countryId);
+        modelAndView.addObject("chosenRegions",regions);
+        System.out.println(regions);
+        return modelAndView;
     }
 }

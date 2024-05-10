@@ -119,4 +119,26 @@ public class RegionRepo {
         }
 
     }
+
+    public static List<Region> findByCountryId(Integer countryId) {
+        String query ="select * from region where countryid=?";
+        try (
+                Connection connection = ConnectionManager.getDataSource().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setInt(1,countryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Region>  regions  = new ArrayList<>();
+            while (resultSet.next()) {
+                regions.add(new Region(
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("countryId")
+                ));
+            }
+            return  regions;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

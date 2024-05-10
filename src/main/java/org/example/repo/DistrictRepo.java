@@ -79,4 +79,19 @@ public class DistrictRepo {
             throw new RuntimeException(e);
         }
     }
+
+    public static void save(District district) {
+        String sql = "UPDATE district SET name = ?, regionid = ?";
+        try(Connection connection= ConnectionManager.getDataSource().getConnection();
+            PreparedStatement preparedStatement=connection.prepareStatement(sql))
+        {
+            preparedStatement.setString(1, district.getName());
+            preparedStatement.setInt(2,district.getRegionId() );
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
 }
