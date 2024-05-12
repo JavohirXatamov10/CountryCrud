@@ -81,7 +81,7 @@ public class DistrictRepo {
     }
 
     public static void save(District district) {
-        String sql = "UPDATE district SET name = ?, regionid = ?";
+        String sql = "insert into district(name, regionid) VALUES (?,?)";
         try(Connection connection= ConnectionManager.getDataSource().getConnection();
             PreparedStatement preparedStatement=connection.prepareStatement(sql))
         {

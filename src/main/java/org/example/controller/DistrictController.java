@@ -57,14 +57,8 @@ public class DistrictController {
     @PostMapping("/addDistrict")
     public String addDistrict(@ModelAttribute District district) {
         DistrictRepo.save(district);
-        return "redirect:/addDistrict";
+        return "redirect:/district";
     }
-    @PostMapping("/getRegions/{id}")
-    public ModelAndView getRegions(@PathVariable(name = "id") Integer countryId) {
-        ModelAndView modelAndView=new ModelAndView();
-        List<Region> regions=RegionRepo.findByCountryId(countryId);
-        modelAndView.addObject("chosenRegions",regions);
-        System.out.println(regions);
-        return modelAndView;
-    }
+
+
 }

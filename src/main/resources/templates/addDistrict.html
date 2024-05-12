@@ -33,13 +33,13 @@
 </div>
 <script>
     function CountryAndRegion() {
-        var select = document.getElementById("selectCountry");
-        var countryId = select.value;
-        var selectRegion = document.getElementById("selectRegion");
+        let select = document.getElementById("selectCountry");
+        let countryId = select.value;
+        let selectRegion = document.getElementById("selectRegion");
         selectRegion.innerHTML = "<option disabled selected>Choose Region</option>";
-        const url = "/district/getRegions/" + countryId;
+        const url = "/findRegion/getRegions/" + countryId;
         fetch(url, {
-            method:"POST"
+            method:"GET"
         })
             .then(response => {
                 if (!response.ok) {
@@ -51,9 +51,10 @@
                 if (!data || data.length === 0) {
                     throw new Error('No regions found for the selected country');
                 }
+                console.log(data)
                 selectRegion.innerHTML = "<option disabled selected>Choose Region</option>";
                 data.forEach(region => {
-                    var option = document.createElement("option");
+                    let option = document.createElement("option");
                     option.value = region.id;
                     option.text = region.name;
                     selectRegion.appendChild(option);
